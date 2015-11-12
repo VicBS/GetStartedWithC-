@@ -42,5 +42,5 @@ int main()
         }
     }
 
-    cout << "Cabalistic Number: " << finalNumber << endl;
+    cout << "Final Number: " << finalNumber << endl;
 }
