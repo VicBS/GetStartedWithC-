@@ -1,14 +1,10 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include "Carta.h"
 
 using namespace std;
 
-struct Carta {
-    char palo;
-    int num;
-    Carta *sig; // this pointer is for iterate through the whole card stack
-};
 
 class MontonCartas
 {
@@ -30,4 +26,5 @@ class MontonCartas
         int getNumeroCarta (int pos) const;
         char getPaloCarta (int pos) const;
         Carta* getCarta (int pos) ;
+        Carta* sacarCarta (int pos) ;
 };

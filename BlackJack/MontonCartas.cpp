@@ -111,7 +111,7 @@ void MontonCartas::mezclar()
     aux = p;
     int tam=0;
     for(tam; aux != 0; tam++)
-    aux = (*aux).sig;
+        aux = (*aux).sig;
 
     Carta *aux2;
 
@@ -237,6 +237,26 @@ int MontonCartas::sizeMonton() const
 
     return tam;
 }
+
+Carta* MontonCartas::getCarta(int pos)
+{
+    Carta* laCarta = p;
+
+    for(int i=0; i<pos; i++)
+        laCarta = (*laCarta).sig;
+
+    return laCarta;
+}
+
+
+Carta* MontonCartas::sacarCarta(int pos)
+{
+    Carta * laCarta = getCarta(pos);
+    eliminarCarta(pos);
+    (*laCarta).sig = 0;
+    return laCarta;
+}
+
 
 void MontonCartas::printMonton()
 {
