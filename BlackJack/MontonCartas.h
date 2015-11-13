@@ -10,6 +10,8 @@ class MontonCartas
 {
     Carta *p; // this is our stack, a simple pointer. Yeah, amazing xD
 
+    void intercambiar(int pos1, int pos2);
+
     public:
         MontonCartas();          // constructor that builds an empty Spanish card stack
         MontonCartas(int todas); // constructor that builds a complete Spanish card stack

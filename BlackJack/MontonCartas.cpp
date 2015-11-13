@@ -105,57 +105,30 @@ MontonCartas& MontonCartas::operator= (const MontonCartas& orig)
     return *this;
 }
 
-void MontonCartas::mezclar()
+void MontonCartas::intercambiar(int pos1, int pos2)
 {
-    // jajajajajajajajajajaaj
-    Carta *aux;
-    aux = p;
-    int tam=0;
-    for(tam; aux != 0; tam++)
-        aux = (*aux).sig;
+    Carta* aux1;
+    Carta* aux2 ;
+    aux1 = p;
+    aux2 = p;
 
-    Carta *aux2;
+    for(int i=0; i<pos1; ++i)
+        aux1 = (*aux1).sig;
 
-    for(int i=0; i<tam; i++)
-    {
-        aux = p;
-        aux2 = p;
+    for(int i=0; i<pos2; ++i)
+        aux2 = (*aux2).sig;
 
-        srand(time(0));
-        int a = rand()%tam;
-        int b = rand()%tam;
+    int numAux = (*aux1).num ;
+    char paloAux = aux1->palo ;
 
-        Carta *aux2a;
-        Carta *auxan;
-        aux2a = p;
-        auxan = p;
+    aux1->num = aux2->num;
+    aux1->palo = aux2->palo;
 
-        for(int h=0; h<a; h++)
-            aux = (*aux).sig;
-        for(int h=0; h<a-1; h++)
-            auxan = (*auxan).sig;
-        for(int h=0; h<b; h++)
-            aux2 = (*aux2).sig;
-        for(int h=0; h<b-1; h++)
-            aux2a = (*aux2a).sig;
-
-        if( (&aux != &aux2) && (&aux != &auxan) && (&aux2 != &aux2a) )
-        {
-            (*aux).sig = (*aux2).sig;
-            (*aux2).sig = aux2a;
-            (*aux2a).sig = aux;
-            (*auxan).sig = aux2;
-        }
-        else if( (&aux == &auxan) || (&aux2 == &aux2a) )
-        {//que sera cuando estén al principio
-
-            (*aux).sig = (*aux2).sig;
-            (*aux2).sig = aux2a;
-            (*aux2a).sig = aux;
-            p = aux2;
-        }
-    }
+    aux2->num = numAux;
+    aux2->palo = paloAux;
 }
+
+
 
 void MontonCartas::eliminarCarta (int pos)
 {
@@ -239,6 +212,23 @@ int MontonCartas::sizeMonton() const
     return tam;
 }
 
+
+void MontonCartas::mezclar()
+{
+    // jajajajajajajajajajaaj
+    int tam = sizeMonton();
+
+    for(int i=0; i<tam; i++)
+    {
+        srand(time(0));
+        int pos1 = rand()%tam;
+        int pos2 = rand()%tam;
+
+        intercambiar(pos1,pos2);
+    }
+}
+
+
 Carta* MontonCartas::getCarta(int pos)
 {
     Carta* laCarta = p;
@@ -252,8 +242,10 @@ Carta* MontonCartas::getCarta(int pos)
 
 Carta* MontonCartas::sacarCarta(int pos)
 {
+    /** BUG Al sacar la carta del tope*/
+
     Carta * laCarta = getCarta(pos);
-    eliminarCarta(pos);
+    eliminarCarta(pos); /** <-- puede que este sea el problema */
     (*laCarta).sig = 0;
     return laCarta;
 }

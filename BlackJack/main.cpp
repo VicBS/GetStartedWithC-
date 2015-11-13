@@ -34,23 +34,30 @@ void test1()
 void test2 ()
 {
     MontonCartas monton (1);
-    // monton.mezclar();
 
-    cout << "Mostramos el monton barajado" << endl << endl;
     monton.printMonton();
 
-    cout << endl << "Sacamos una carta: " ;
-    Carta *unaCarta = monton.sacarCarta(0);
-    cout << (*unaCarta).num << (*unaCarta).palo << endl << "Y se la damos al jugador" << endl;
+    cout << endl << "Sacamos una carta: ";
+    Carta* carta = monton.sacarCarta(0);
 
+    cout << (*carta).num << (*carta).palo << endl << endl;
+    if((*carta).sig != 0)
+        cout << "Apunta a otra carta" << endl << endl;
+    else
+        cout << "No apunta a ninguna carta" << endl << endl;
 
-    Player player (1,"Alfonso");
-    player.addCarta(unaCarta);
+    Player player (1, "Victor");
+    cout << "Se la damos a " << player.getNombre() << endl;
+    double puntuacion = player.addCarta(carta);
 
-    cout<< endl << "Ahora mostramos la mano del jugador" << endl;
+    cout<< endl << "Mostramos la mano de " << player.getNombre() << endl;
     player.showHand();
 
+    cout << endl << "Mostramos la puntuacion de " << player.getNombre() << endl;
+    cout << puntuacion << endl << endl;
 
+    cout << "Volvemos a mirar el monton" << endl;
+    monton.printMonton();
 }
 
 int main()
