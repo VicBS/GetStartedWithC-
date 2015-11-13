@@ -107,6 +107,7 @@ MontonCartas& MontonCartas::operator= (const MontonCartas& orig)
 
 void MontonCartas::mezclar()
 {
+    // jajajajajajajajajajaaj
     Carta *aux;
     aux = p;
     int tam=0;
