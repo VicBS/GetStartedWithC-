@@ -66,6 +66,9 @@ double Player::getPuntos() const
 
 double Player::addCarta(Carta* carta)
 {
+    cout << this->nombre << ": la carta que me habeis dado es..." <<endl;
+    cout << carta->num << carta->palo << endl;
+
     if(mano == 0)
     {
         mano = carta;

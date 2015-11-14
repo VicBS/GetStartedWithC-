@@ -129,23 +129,16 @@ void MontonCartas::intercambiar(int pos1, int pos2)
 }
 
 
-
-void MontonCartas::eliminarCarta (int pos)
+Carta* MontonCartas::getCarta(int pos)
 {
-    Carta *aux;
-    Carta *aux2;
-    aux = p;
-    aux2 = p;
+    Carta* laCarta = p;
 
     for(int i=0; i<pos; i++)
-        aux = (*aux).sig;
-    for(int i=0; i<pos-1; i++)
-        aux2 = (*aux2).sig;
+        laCarta = (*laCarta).sig;
 
-    (*aux2).sig = (*aux).sig;
-
-    delete aux;
+    return laCarta;
 }
+
 
 int MontonCartas::getNumeroCarta (int pos) const
 {
@@ -164,6 +157,76 @@ char MontonCartas::getPaloCarta (int pos) const
         aux = (*aux).sig;
 
     return (*aux).palo;
+}
+
+
+int MontonCartas::sizeMonton() const
+{
+    int tam=0;
+    Carta *aux;
+    aux = p;
+    for(tam; aux != 0; tam++)
+        aux = (*aux).sig;
+
+    return tam;
+}
+
+
+void MontonCartas::eliminarCarta (int pos)
+{
+    int tam = sizeMonton();
+    Carta* aux ;
+    aux = p;
+
+    if(pos == 0)
+    {
+        p = p->sig;
+    }
+    else if(pos == tam-1)
+    {
+        Carta* aux2 ;
+        aux2 = p;
+
+        for(int i=0; i<pos; ++i)
+            aux = aux->sig;
+
+        for(int i=0; i<pos-1; ++i)
+            aux2 = aux2->sig;
+
+        aux2->sig = 0;
+    }
+    else
+    {
+        Carta* aux2 ;
+        aux2 = p;
+
+        for(int i=0; i<pos; ++i)
+            aux = aux->sig;
+
+        for(int i=0; i<pos-1; ++i)
+            aux2 = aux2->sig;
+
+        aux2->sig = aux->sig;
+        aux->sig = 0;
+    }
+
+    delete aux;
+
+    /*
+    Carta *aux;
+    Carta *aux2;
+    aux = p;
+    aux2 = p;
+
+    for(int i=0; i<pos; i++)
+        aux = (*aux).sig;
+    for(int i=0; i<pos-1; i++)
+        aux2 = (*aux2).sig;
+
+    (*aux2).sig = (*aux).sig;
+
+    delete aux;
+    */
 }
 
 void MontonCartas::insertarCarta (int n, char tipo)
@@ -201,16 +264,7 @@ void MontonCartas::insertarCarta (int n, char tipo)
         cout<<"No se pudo añadir porque ya existe."<<endl;
 }
 
-int MontonCartas::sizeMonton() const
-{
-    int tam=0;
-    Carta *aux;
-    aux = p;
-    for(tam; aux != 0; tam++)
-        aux = (*aux).sig;
 
-    return tam;
-}
 
 
 void MontonCartas::mezclar()
@@ -229,23 +283,13 @@ void MontonCartas::mezclar()
 }
 
 
-Carta* MontonCartas::getCarta(int pos)
-{
-    Carta* laCarta = p;
 
-    for(int i=0; i<pos; i++)
-        laCarta = (*laCarta).sig;
-
-    return laCarta;
-}
 
 
 Carta* MontonCartas::sacarCarta(int pos)
 {
-    /** BUG Al sacar la carta del tope*/
-
     Carta * laCarta = getCarta(pos);
-    eliminarCarta(pos); /** <-- puede que este sea el problema */
+    eliminarCarta(pos);
     (*laCarta).sig = 0;
     return laCarta;
 }
