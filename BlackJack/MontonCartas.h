@@ -9,6 +9,7 @@ using namespace std;
 class MontonCartas
 {
     Carta *p; // this is our stack, a simple pointer. Yeah, amazing xD
+    Carta *deleted ;
 
     void intercambiar(int pos1, int pos2);
 

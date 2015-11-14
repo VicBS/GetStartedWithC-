@@ -1,19 +1,19 @@
 # depslib dependency file v1.0
-1447514779 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\main.cpp
+1447527878 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\main.cpp
 	<iostream>
 	"MontonCartas.h"
 	"Player.h"
 
-1447412658 c:\users\víctor\documents\github\getstartedwithc-\blackjack\montoncartas.h
+1447517786 c:\users\víctor\documents\github\getstartedwithc-\blackjack\montoncartas.h
 	<iostream>
 	<ctime>
 	<cstdlib>
 	"Carta.h"
 
-1447515887 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\montoncartas.cpp
+1447517786 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\montoncartas.cpp
 	"MontonCartas.h"
 
-1447376398 c:\users\víctor\documents\github\getstartedwithc-\blackjack\player.h
+1447528181 c:\users\víctor\documents\github\getstartedwithc-\blackjack\player.h
 	<iostream>
 	<ctime>
 	<cstdlib>
@@ -23,6 +23,8 @@
 1447376440 c:\users\víctor\documents\github\getstartedwithc-\blackjack\carta.h
 	<iostream>
 
-1447502542 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\player.cpp
+1447528264 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\player.cpp
 	"Player.h"
+
+1447517786 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\banca.cpp
 

@@ -112,7 +112,7 @@ void test4()
     Carta* carta = monton.sacarCarta( pos );
     Carta* carta2 = monton.sacarCarta( pos );
 
-    cout << "Carta 1 -> " << (*carta).num << (*carta).palo << endl << endl;
+    cout << "Carta 1 -> " << (*carta).num << (*carta).palo << endl ;
     cout << "Carta 2 -> " << (*carta2).num << (*carta2).palo << endl << endl;
 
     Player player (1, "Victor");
@@ -128,6 +128,11 @@ void test4()
 
     cout << "Volvemos a mirar el monton" << endl;
     monton.printMonton();
+
+
+    cout << endl << "Limpiamos la mano de " << player.getNombre() << endl;
+    player.limpiarMano();
+    player.showHand();
 }
 
 int main()

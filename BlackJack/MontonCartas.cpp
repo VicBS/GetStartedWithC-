@@ -181,6 +181,7 @@ void MontonCartas::eliminarCarta (int pos)
     if(pos == 0)
     {
         p = p->sig;
+        aux->sig = 0;
     }
     else if(pos == tam-1)
     {
@@ -210,7 +211,22 @@ void MontonCartas::eliminarCarta (int pos)
         aux->sig = 0;
     }
 
-    delete aux;
+    // añadimos a la basura
+    if(this->deleted == 0)
+    {
+        deleted = aux;
+    }
+    else
+    {
+        Carta* auxDeleted ;
+        auxDeleted = deleted;
+        while(auxDeleted->sig != 0)
+        {
+            auxDeleted = auxDeleted->sig;
+        }
+
+        auxDeleted->sig = aux;
+    }
 }
 
 void MontonCartas::insertarCarta (int n, char tipo)

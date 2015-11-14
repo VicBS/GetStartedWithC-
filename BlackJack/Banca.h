@@ -18,5 +18,6 @@ class Banca
         Banca();
         ~Banca();
 
-
+        Carta* darCarta();
+        void reiniciar();
 };

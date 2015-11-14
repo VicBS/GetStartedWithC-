@@ -14,6 +14,7 @@ Player::Player(int id, string name)
 
 Player::~Player()
 {
+    ultimaCarta = 0;
     Carta *aux;
 
     aux = (*mano).sig;
@@ -23,6 +24,7 @@ Player::~Player()
         mano = aux;
         aux = (*aux).sig;
     }
+
     delete mano;
 }
 
@@ -64,9 +66,9 @@ double Player::getPuntos() const
 }
 
 
-double Player::addCarta(Carta* carta)
+double Player::addCarta(Carta* &carta)
 {
-    cout << this->nombre << ": la carta que me habeis dado es..." <<endl;
+    cout << this->nombre << ": la carta que me habeis dado es " ;
     cout << carta->num << carta->palo << endl;
 
     if(mano == 0)
@@ -91,4 +93,22 @@ double Player::addCarta(Carta* carta)
         pts = (double)numero;
 
     return sumarPuntos(pts);
+}
+
+
+void Player::limpiarMano()
+{
+    Carta* aux ;
+    while(this->mano != this->ultimaCarta)
+    {
+        aux = mano ;
+        mano = aux->sig;
+        aux->sig = 0;
+        delete aux;
+    }
+
+    aux = mano;
+    delete aux;
+    delete mano;
+    delete ultimaCarta;
 }
