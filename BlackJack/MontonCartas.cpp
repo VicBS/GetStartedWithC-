@@ -5,6 +5,7 @@ using namespace std;
 MontonCartas::MontonCartas()
 {
     p = 0;
+    deleted = 0;
 }
 
 MontonCartas::MontonCartas(int todas)
@@ -14,6 +15,7 @@ MontonCartas::MontonCartas(int todas)
     Carta *aux;
     bool primeraCarta = true;
 
+    deleted = 0;
 
     for(int i=0; i<4; i++)
     {
@@ -287,7 +289,6 @@ Carta* MontonCartas::sacarCarta(int pos)
 {
     Carta * laCarta = getCarta(pos);
     eliminarCarta(pos);
-    (*laCarta).sig = 0;
     return laCarta;
 }
 
