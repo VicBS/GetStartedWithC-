@@ -211,22 +211,6 @@ void MontonCartas::eliminarCarta (int pos)
     }
 
     delete aux;
-
-    /*
-    Carta *aux;
-    Carta *aux2;
-    aux = p;
-    aux2 = p;
-
-    for(int i=0; i<pos; i++)
-        aux = (*aux).sig;
-    for(int i=0; i<pos-1; i++)
-        aux2 = (*aux2).sig;
-
-    (*aux2).sig = (*aux).sig;
-
-    delete aux;
-    */
 }
 
 void MontonCartas::insertarCarta (int n, char tipo)
@@ -271,19 +255,16 @@ void MontonCartas::mezclar()
 {
     // jajajajajajajajajajaaj
     int tam = sizeMonton();
+    srand(time(0));
 
     for(int i=0; i<tam; i++)
     {
-        srand(time(0));
         int pos1 = rand()%tam;
         int pos2 = rand()%tam;
 
         intercambiar(pos1,pos2);
     }
 }
-
-
-
 
 
 Carta* MontonCartas::sacarCarta(int pos)
@@ -298,22 +279,19 @@ Carta* MontonCartas::sacarCarta(int pos)
 void MontonCartas::printMonton()
 {
     Carta * aux = p;
-    char palo = '#';
+    int veces = 0;
 
-    while( aux != 0 )
+    while(aux != 0)
     {
-        if(palo == '#')
-            palo = (*aux).palo ;
-
-        if(palo != (*aux).palo)
+        cout << aux->num << aux->palo << " " ;
+        aux = aux->sig;
+        veces ++;
+        if(veces == 12)
         {
-            palo = (*aux).palo ;
             cout << endl;
+            veces = 0;
         }
-
-        cout << (*aux).num << (*aux).palo << " ";
-
-        aux = (*aux).sig;
     }
+
     cout << endl;
 }

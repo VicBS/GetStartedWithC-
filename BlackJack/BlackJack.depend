@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1447501720 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\main.cpp
+1447514779 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\main.cpp
 	<iostream>
 	"MontonCartas.h"
 	"Player.h"
@@ -10,7 +10,7 @@
 	<cstdlib>
 	"Carta.h"
 
-1447501396 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\montoncartas.cpp
+1447515887 source:c:\users\víctor\documents\github\getstartedwithc-\blackjack\montoncartas.cpp
 	"MontonCartas.h"
 
 1447376398 c:\users\víctor\documents\github\getstartedwithc-\blackjack\player.h

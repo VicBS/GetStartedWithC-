@@ -69,16 +69,56 @@ void test3()
     int pos = 13;
     cout << endl << "Posicion: " << pos << endl;
 
-    cout << endl << "Sacamos dos cartas: ";
+    cout << endl << "Sacamos dos cartas: " << endl;
     Carta* carta = monton.sacarCarta( pos );
     Carta* carta2 = monton.sacarCarta( pos );
 
-    cout << "Carta 1: " << (*carta).num << (*carta).palo << endl << endl;
-    cout << "Carta 2: " << (*carta2).num << (*carta2).palo << endl << endl;
+    cout << "Carta 1 -> " << (*carta).num << (*carta).palo << endl << endl;
+    cout << "Carta 2 -> " << (*carta2).num << (*carta2).palo << endl << endl;
 
     Player player (1, "Victor");
-    cout << "Se la damos a " << player.getNombre() << endl;
+    cout << "Se las damos a " << player.getNombre() << endl;
     double puntuacion = player.addCarta(carta);
+    puntuacion = player.addCarta(carta2);
+
+    cout<< endl << "Mostramos la mano de " << player.getNombre() << endl;
+    player.showHand();
+
+    cout << endl << "Mostramos la puntuacion de " << player.getNombre() << endl;
+    cout << puntuacion << " punto/s" << endl << endl;
+
+    cout << "Volvemos a mirar el monton" << endl;
+    monton.printMonton();
+}
+
+
+void test4()
+{
+    cout << "Test 4" << endl << endl;
+
+    MontonCartas monton (1);
+
+    cout << "Monton ordenado" << endl;
+    monton.printMonton();
+
+    cout << "Monton mezclado" << endl;
+    monton.mezclar();
+    monton.printMonton();
+
+    int pos = 13;
+    cout << endl << "Posicion: " << pos << endl;
+
+    cout << endl << "Sacamos dos cartas: " << endl;
+    Carta* carta = monton.sacarCarta( pos );
+    Carta* carta2 = monton.sacarCarta( pos );
+
+    cout << "Carta 1 -> " << (*carta).num << (*carta).palo << endl << endl;
+    cout << "Carta 2 -> " << (*carta2).num << (*carta2).palo << endl << endl;
+
+    Player player (1, "Victor");
+    cout << "Se las damos a " << player.getNombre() << endl;
+    double puntuacion = player.addCarta(carta);
+    puntuacion = player.addCarta(carta2);
 
     cout<< endl << "Mostramos la mano de " << player.getNombre() << endl;
     player.showHand();
@@ -92,5 +132,5 @@ void test3()
 
 int main()
 {
-    test3();
+    test4();
 }
