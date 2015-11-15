@@ -32,8 +32,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Banca.cpp" />
-		<Unit filename="Banca.h" />
 		<Unit filename="Carta.h" />
 		<Unit filename="MontonCartas.cpp" />
 		<Unit filename="MontonCartas.h" />

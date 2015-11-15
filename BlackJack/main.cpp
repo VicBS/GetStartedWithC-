@@ -1,7 +1,7 @@
 #include <iostream>
 #include "MontonCartas.h"
 #include "Player.h"
-#include "Banca.h"
+#include "Crupier.h"
 
 using namespace std;
 
@@ -51,6 +51,8 @@ void test5()
 void test6()
 {
     cout << "Test 6" << endl << endl;
+
+    Crupier cu ();
 
     cout << "Fin del Test 6" << endl;
 }
