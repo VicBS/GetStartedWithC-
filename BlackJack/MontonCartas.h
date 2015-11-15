@@ -12,6 +12,7 @@ class MontonCartas
     Carta *deleted ;
 
     void intercambiar(int pos1, int pos2);
+    void eliminarCarta(int pos);
 
     public:
         MontonCartas();          // constructor that builds an empty Spanish card stack
@@ -22,7 +23,6 @@ class MontonCartas
 
         void mezclar ();
         void insertarCarta (int n, char tipo);
-        void eliminarCarta(int pos);
         void printMonton ();
 
         int sizeMonton () const;

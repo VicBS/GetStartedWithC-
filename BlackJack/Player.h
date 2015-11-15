@@ -30,7 +30,7 @@ class Player
         /**
             return Los puntos que tiene el jugador al añadir esa carta.
         */
-        double addCarta (Carta* &carta);
+        double addCarta (Carta* carta);
 
         void limpiarMano ();
 };

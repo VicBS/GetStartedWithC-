@@ -39,6 +39,8 @@ MontonCartas::MontonCartas(int todas)
             aux = new Carta;
         }
     }
+
+    delete aux; // TODO borrar
 }
 
 MontonCartas::~MontonCartas()
@@ -53,6 +55,16 @@ MontonCartas::~MontonCartas()
         aux = (*aux).sig;
     }
     delete p;
+
+
+    aux = (*deleted).sig;
+    while(aux != 0)
+    {
+        delete deleted;
+        deleted = aux;
+        aux = (*aux).sig;
+    }
+    delete deleted;
 }
 
 MontonCartas& MontonCartas::operator= (const MontonCartas& orig)
@@ -295,6 +307,7 @@ Carta* MontonCartas::sacarCarta(int pos)
 
 void MontonCartas::printMonton()
 {
+    cout << "Monton existente" << endl;
     Carta * aux = p;
     int veces = 0;
 
@@ -308,6 +321,15 @@ void MontonCartas::printMonton()
             cout << endl;
             veces = 0;
         }
+    }
+
+    cout << endl << "Monton borrado" << endl;
+
+    aux = deleted;
+    while(aux != 0)
+    {
+        cout << aux->num << aux->palo << " " ;
+        aux = aux->sig;
     }
 
     cout << endl;
