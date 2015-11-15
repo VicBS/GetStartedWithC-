@@ -40,7 +40,7 @@ MontonCartas::MontonCartas(int todas)
         }
     }
 
-    delete aux; // TODO borrar
+    delete aux;
 }
 
 MontonCartas::~MontonCartas()
@@ -104,7 +104,7 @@ MontonCartas& MontonCartas::operator= (const MontonCartas& orig)
             aux2 = (*aux2).sig;
         }
 
-        //copiamos datos
+        // data copy
         aux = this->p;
         aux2 = orig.p;
         while(aux2 != 0)
@@ -174,13 +174,14 @@ char MontonCartas::getPaloCarta (int pos) const
 }
 
 
-int MontonCartas::sizeMonton() const
+int MontonCartas::sizeMonton()
 {
     int tam=0;
     Carta *aux;
     aux = p;
-    for(tam; aux != 0; tam++)
+    for(tam; aux != 0; tam++){
         aux = (*aux).sig;
+    }
 
     return tam;
 }
@@ -225,7 +226,8 @@ void MontonCartas::eliminarCarta (int pos)
         aux->sig = 0;
     }
 
-    // añadimos a la basura
+    // now we have to add the deleted card to the deleted pointer
+
     if(this->deleted == 0)
     {
         deleted = aux;
@@ -245,7 +247,7 @@ void MontonCartas::eliminarCarta (int pos)
 
 void MontonCartas::insertarCarta (int n, char tipo)
 {
-    //1º buscamos alguna carta igual en numero y palo
+    //we have to search for the same and existing card
     bool encontrada = false;
     Carta *aux;
     aux = p;
@@ -257,17 +259,17 @@ void MontonCartas::insertarCarta (int n, char tipo)
         aux = (*aux).sig;
     }
 
-    //ahora la añadimos al final
-    if(!encontrada)
+
+    if(!encontrada) // if that's true, now we have to add it to the end
     {
         aux = p;
-        //movemos aux hasta el ultimo lugar
+        //move aux to the end
         while((*aux).sig != 0)
         {
             aux = (*aux).sig;
         }
 
-        //creamos la nueva carta
+        //create a new card
         Carta *aux2 = new Carta;
         (*aux2).sig = 0;
         (*aux2).num = n;
@@ -275,7 +277,7 @@ void MontonCartas::insertarCarta (int n, char tipo)
 
         (*aux).sig = aux2;
     }else
-        cout<<"No se pudo añadir porque ya existe."<<endl;
+        cout<<"This card already exist."<<endl;
 }
 
 
@@ -283,7 +285,6 @@ void MontonCartas::insertarCarta (int n, char tipo)
 
 void MontonCartas::mezclar()
 {
-    // jajajajajajajajajajaaj
     int tam = sizeMonton();
     srand(time(0));
 
@@ -307,7 +308,6 @@ Carta* MontonCartas::sacarCarta(int pos)
 
 void MontonCartas::printMonton()
 {
-    cout << "Monton existente" << endl;
     Carta * aux = p;
     int veces = 0;
 
@@ -315,6 +315,7 @@ void MontonCartas::printMonton()
     {
         cout << aux->num << aux->palo << " " ;
         aux = aux->sig;
+
         veces ++;
         if(veces == 12)
         {
@@ -322,15 +323,4 @@ void MontonCartas::printMonton()
             veces = 0;
         }
     }
-
-    cout << endl << "Monton borrado" << endl;
-
-    aux = deleted;
-    while(aux != 0)
-    {
-        cout << aux->num << aux->palo << " " ;
-        aux = aux->sig;
-    }
-
-    cout << endl;
 }

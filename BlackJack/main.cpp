@@ -168,7 +168,14 @@ void test5()
     player.limpiarMano();
 
     player.showHand();
+}
 
+
+void test6()
+{
+    cout << "Test 6" << endl << endl;
+
+    MontonCartas monton (1);
 
     monton.printMonton();
 }
@@ -176,5 +183,5 @@ void test5()
 
 int main()
 {
-    test5();
+    test6();
 }

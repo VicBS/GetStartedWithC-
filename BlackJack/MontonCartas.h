@@ -25,7 +25,7 @@ class MontonCartas
         void insertarCarta (int n, char tipo);
         void printMonton ();
 
-        int sizeMonton () const;
+        int sizeMonton ();
         int getNumeroCarta (int pos) const;
         char getPaloCarta (int pos) const;
         Carta* getCarta (int pos) ;

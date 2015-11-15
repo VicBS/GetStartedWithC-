@@ -44,7 +44,7 @@ void Player::showHand()
 {
     Carta* aux = mano ;
 
-    cout << "Mano del jugador " << nombre << endl;
+    cout << "Cards of the player " << nombre << endl;
     while(aux != 0)
     {
         cout << (*aux).num << (*aux).palo << " ";
@@ -68,7 +68,7 @@ double Player::getPuntos() const
 
 double Player::addCarta(Carta* carta)
 {
-    cout << this->nombre << ": la carta que me habeis dado es " ;
+    cout << this->nombre << ": the card you have gave me is " ;
     cout << carta->num << carta->palo << endl;
 
     if(mano == 0)
