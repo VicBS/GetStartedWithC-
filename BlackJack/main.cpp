@@ -1,6 +1,7 @@
 #include <iostream>
 #include "MontonCartas.h"
 #include "Player.h"
+#include "Banca.h"
 
 using namespace std;
 
@@ -51,8 +52,7 @@ void test6()
 {
     cout << "Test 6" << endl << endl;
 
-    MontonCartas monton (1);
-    monton.printMonton();
+    cout << "Fin del Test 6" << endl;
 }
 
 

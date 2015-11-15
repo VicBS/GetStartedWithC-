@@ -12,6 +12,8 @@ MontonCartas::MontonCartas(int todas)
 {
     char pal [] = {'O','C','B','E'};
 
+    deleted = 0;
+
     Carta *aux;
     bool primeraCarta = true;
 

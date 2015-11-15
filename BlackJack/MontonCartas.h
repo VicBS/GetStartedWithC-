@@ -1,3 +1,7 @@
+
+#ifndef Included_MontonCartas_H
+#define Included_MontonCartas_H
+
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -9,7 +13,7 @@ using namespace std;
 class MontonCartas
 {
     Carta *p; // this is our stack, a simple pointer. Yeah, amazing xD
-    Carta *deleted = 0;
+    Carta *deleted;
 
     void intercambiar(int pos1, int pos2);
     void eliminarCarta(int pos);
@@ -32,3 +36,5 @@ class MontonCartas
         Carta* getCarta (int pos) ;
         Carta* sacarCarta (int pos) ;
 };
+
+#endif
