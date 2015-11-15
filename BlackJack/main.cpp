@@ -1,64 +1,58 @@
 #include <iostream>
 #include "MontonCartas.h"
 #include "Player.h"
-#include "Crupier.h"
 
 using namespace std;
 
-void on ()
+int on ()
 {
     cout << "\t******** BLACK JACK ********" << endl << endl;
     cout << "\t1 - Play" <<endl;
     cout << "\t2 - Rules" << endl;
     cout << "\t3 - Exit" <<endl;
+
+    int op ;
+    cin >> op;
+    return op;
 }
 
-void test5()
-{
-    cout << "Test 5" << endl << endl;
 
+void option1()
+{
     MontonCartas monton (1);
     monton.mezclar();
-    monton.printMonton();
 
-    int pos = 13;
-    cout << "Posicion: " << pos << endl;
+    cout << "How many players are going to play? (MAX 10) " ;
+    int numPlayers ;
+    cin >> numPlayers;
+    cout << endl;
 
-    cout << endl << "Sacamos dos cartas: " << endl;
-    Carta* carta = monton.sacarCarta( pos );
-    Carta* carta2 = monton.sacarCarta( pos );
 
-    cout << "Carta 1 -> " << (*carta).num << (*carta).palo << endl ;
-    cout << "Carta 2 -> " << (*carta2).num << (*carta2).palo << endl << endl;
-
-    Player player (1, "Victor");
-    cout << "Se las damos a " << player.getNombre() << endl;
-    double puntuacion = player.addCarta(carta);
-    puntuacion = player.addCarta(carta2);
-
-    player.showHand();
-
-    cout << endl << "Mostramos la puntuacion de " << player.getNombre() << endl;
-    cout << puntuacion << " punto/s" << endl;
-
-    cout << endl << "Limpiamos la mano de " << player.getNombre() << endl;
-    player.limpiarMano();
-
-    player.showHand();
 }
 
+void option2(){}
 
-void test6()
+void option3(){}
+
+void optionChooser (int op)
 {
-    cout << "Test 6" << endl << endl;
+    switch(op)
+    {
+        case 1:
+        {
+            option1();
+        }
+        break;
 
-    Crupier cu ();
+        case 2:{ option2(); }break;
+        case 3:{ option3(); }break;
 
-    cout << "Fin del Test 6" << endl;
+        default:{ cout << "Invalid option" << endl; }
+    }
 }
 
 
 int main()
 {
-    test6();
+    Player* jugadores [5];
 }
