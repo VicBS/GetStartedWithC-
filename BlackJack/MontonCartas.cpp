@@ -15,15 +15,14 @@ MontonCartas::MontonCartas(int todas)
     Carta *aux;
     bool primeraCarta = true;
 
-    deleted = 0;
-
     for(int i=0; i<4; i++)
     {
         char a = pal[3-i];
-        aux = new Carta;
 
         for(int j=0; j<12; j++)
         {
+            aux = new Carta;
+
             (*aux).palo = a;
             (*aux).num = 12-j;
 
@@ -35,8 +34,6 @@ MontonCartas::MontonCartas(int todas)
                 (*aux).sig = p;
 
             p = aux;
-
-            aux = new Carta;
         }
     }
 
@@ -45,27 +42,11 @@ MontonCartas::MontonCartas(int todas)
 
 MontonCartas::~MontonCartas()
 {
-    Carta *aux;
-
-    aux = (*p).sig;
-    while(aux != 0)
-    {
-        delete p;
-        p = aux;
-        aux = (*aux).sig;
-    }
-    delete p;
-
-
-    aux = (*deleted).sig;
-    while(aux != 0)
-    {
-        delete deleted;
-        deleted = aux;
-        aux = (*aux).sig;
-    }
-    delete deleted;
+    recursiveDelete(p);
+    recursiveDelete(deleted);
 }
+
+
 
 MontonCartas& MontonCartas::operator= (const MontonCartas& orig)
 {
@@ -117,6 +98,20 @@ MontonCartas& MontonCartas::operator= (const MontonCartas& orig)
         }
     }
     return *this;
+}
+
+
+void MontonCartas::recursiveDelete(Carta* &pointer)
+{
+    if(pointer != 0)
+    {
+        if(pointer->sig == 0)
+        {
+            delete pointer;
+        }else{
+            recursiveDelete(pointer->sig);
+        }
+    }
 }
 
 void MontonCartas::intercambiar(int pos1, int pos2)

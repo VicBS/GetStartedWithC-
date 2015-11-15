@@ -9,10 +9,11 @@ using namespace std;
 class MontonCartas
 {
     Carta *p; // this is our stack, a simple pointer. Yeah, amazing xD
-    Carta *deleted ;
+    Carta *deleted = 0;
 
     void intercambiar(int pos1, int pos2);
     void eliminarCarta(int pos);
+    void recursiveDelete (Carta* &pointer);
 
     public:
         MontonCartas();          // constructor that builds an empty Spanish card stack
