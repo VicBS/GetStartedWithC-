@@ -13,6 +13,7 @@ class Player
     Carta* ultimaCarta;
     string nombre ;
     double mPuntos ;
+    bool eliminado ;
 
     double sumarPuntos (double pts);
 
@@ -26,6 +27,7 @@ class Player
         int getID () const ;
         string getNombre () const ;
         double getPuntos () const ;
+        bool isEliminado () const ;
 
         /**
             return Los puntos que tiene el jugador al añadir esa carta.

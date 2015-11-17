@@ -7,6 +7,7 @@ Player::Player(int id, string name)
     this->ID = id;
     this->nombre = name;
     this->mPuntos = 0;
+    this->eliminado = false;
 
     mano = 0;
     ultimaCarta = 0;
@@ -31,6 +32,12 @@ Player::~Player()
 double Player::sumarPuntos(double pts)
 {
     mPuntos += pts ;
+
+    if(mPuntos > 7.5)
+    {
+        eliminado = true;
+    }
+
     return mPuntos;
 }
 
@@ -65,10 +72,15 @@ double Player::getPuntos() const
     return mPuntos;
 }
 
+bool Player::isEliminado() const
+{
+    return eliminado;
+}
+
 
 double Player::addCarta(Carta* carta)
 {
-    cout << this->nombre << ": the card you have gave me is " ;
+    cout << this->nombre << ": the card you have given me is " ;
     cout << carta->num << carta->palo << endl;
 
     if(mano == 0)
