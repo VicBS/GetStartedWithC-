@@ -1,5 +1,7 @@
 /**
 
+   C++ - SEMAPHORES
+
    This is an easy example of how to use semaphores in C++.
    Basically, we have two threads, one to write and another 
    to read, and the only thing they do is write simple long
